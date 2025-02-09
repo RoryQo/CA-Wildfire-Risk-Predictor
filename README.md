@@ -1,6 +1,31 @@
-# Predictive Model for Wildfire Property Damage
+<h1 align="center">Predictive Model for Wildfire Property Damage</h1>
 
-This project focuses on building a predictive model to assess the risk of wildfire damage to properties in the Los Angeles (L.A.) area. The goal is to classify properties as either at risk for severe wildfire damage (greater than 50%) or not, based on various property characteristics. These features include geographic location, building materials, and fire mitigation elements. The model aims to provide insights into which factors most influence wildfire vulnerability, helping stakeholders such as insurance companies, homeowners, and local governments to better prepare for and mitigate potential wildfire damage.
+
+<div>
+  <table align="center">
+    <tr>
+      <td colspan="2" align="center" style="background-color: white; color: black;"><strong>Table of Contents</strong></td>
+    </tr>
+    <tr>
+      <td style="background-color: white; color: black; padding: 10px;">1. <a href="#project-overview" style="color: black;">Project Overview</a></td>
+      <td style="background-color: gray; color: black; padding: 10px;">6. <a href="#future-work" style="color: black;">Future Work</a></td>
+    </tr>
+    <tr>
+      <td style="background-color: gray; color: black; padding: 10px;">2. <a href="#key-features" style="color: black;">Key Features</a></td>
+      <td style="background-color: white; color: black; padding: 10px;">7. <a href="#installation" style="color: black;">Installation</a></td>
+    </tr>
+    <tr>
+      <td style="background-color: white; color: black; padding: 10px;">3. <a href="#methodology" style="color: black;">Methodology</a></td>
+      <td style="background-color: gray; color: black; padding: 10px;">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="2" style="background-color: gray; color: black; padding: 10px;">
+        5. <a href="#key-findings" style="color: black;">Key Findings</a>
+      </td>
+    </tr>
+  </table>
+</div>
+
 
 ## Project Overview
 
