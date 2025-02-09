@@ -84,6 +84,8 @@ Through experimentation, **k-Nearest Neighbors (kNN)** was selected as the optim
 - Higher average accuracy compared to Naïve Bayes.
 - Lower variance in performance across different cross-validation folds, indicating more stable predictions for new, unseen data.
 
+<br>
+
 <img src="https://github.com/RoryQo/CA-Wildfire-Risk-Predictor/blob/main/Visualizations/ModelComparison.jpg" alt="Model Comparison" height="400px">
 
 
