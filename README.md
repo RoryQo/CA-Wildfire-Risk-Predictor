@@ -57,6 +57,9 @@ Through experimentation, **k-Nearest Neighbors (kNN)** was selected as the optim
 - Higher average accuracy compared to Naïve Bayes.
 - Lower variance in performance across different cross-validation folds, indicating more stable predictions for new, unseen data.
 
+<img src="https://github.com/RoryQo/CA-Wildfire-Risk-Predictor/blob/main/Visualizations/ModelComparison.jpg" alt="Model Comparison" height="400px">
+
+
 ### 4. Cross-Validation & Hyperparameter Tuning
 
 We employed **grid search** and **cross-validation** to fine-tune the hyperparameters of both models. This ensured that the models were trained on various subsets of the data, and the best performing hyperparameters were selected based on validation results.
@@ -67,11 +70,24 @@ Grid search explored various combinations of features and hyperparameters to opt
 
 The final kNN model demonstrated a balanced error distribution between **Type 1 errors** (false positives) and **Type 2 errors** (false negatives). This balance is crucial for use in real-world applications, particularly in **insurance**. For example, an equal number of false positives and false negatives means that insurance companies can expect no disproportionate risk of over- or under-payouts. This balance helps maintain fairness in the model’s predictions.
 
+**Classification Report**
+| Class | Precision | Recall | F1-Score | Support |
+|-------|-----------|--------|----------|---------|
+| 0     | 0.93      | 0.91   | 0.92     | 9270    |
+| 1     | 0.93      | 0.94   | 0.93     | 10776   |
+| **Accuracy** | | | **0.93** | **20046** |
+| **Macro avg** | 0.93 | 0.92 | 0.93 | 20046 |
+| **Weighted avg** | 0.93 | 0.93 | 0.93 | 20046 |
+
+
 ## Key Findings
 
 - **Important Features**: The models consistently selected structural elements such as **eaves**, **exterior siding**, and **attached structures** (e.g., decks, fences) as significant predictors of severe wildfire damage. These features, along with **geographic factors** like **latitude** and **longitude**, emerged as critical factors in assessing fire damage risk.
   
 - **Geographic Influence**: A spatial analysis of fire damage revealed that certain regions, such as **Santa Rosa** and **San Andreas**, experienced higher rates of damage, whereas areas like **Quincy** and **Stony River George** had fewer homes affected by the fire. This geographical clustering indicates that certain areas are more vulnerable due to proximity to wildfire-prone zones, construction material types, and other local factors.
+
+ <img src="https://github.com/RoryQo/CA-Wildfire-Risk-Predictor/blob/main/Visualizations/Map.png" alt="Map" height="550px">
+
 
 ## Future Work
 
