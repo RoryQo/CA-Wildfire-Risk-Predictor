@@ -43,6 +43,33 @@ The dataset used for this project contained missing values, which required advan
   
 - **Column Dropping**: Columns with more than 50% missing data were dropped entirely. These features would have required too many assumptions to impute reliably and could have introduced noise into the model.
 
+```
+# Step 1: Drop columns with excessive missingness (>50%)
+threshold = 0.5  # Set threshold for missing values
+cols_to_drop = df.columns[df.isnull().mean() > threshold]
+df_cleaned = df.drop(columns=cols_to_drop)
+
+# Step 2: Impute missing values
+# Numerical columns - apply SoftImpute
+numeric_cols = df_cleaned.select_dtypes(include=['float64', 'int64']).columns
+
+# Replace missing values with np.nan for compatibility with SoftImpute
+df_cleaned[numeric_cols] = df_cleaned[numeric_cols].replace({None: np.nan})
+
+# Apply SoftImpute to impute missing values in numerical columns
+soft_impute_data = SoftImpute().fit_transform(df_cleaned[numeric_cols])
+
+# Replace the imputed values back into the DataFrame
+df_cleaned[numeric_cols] = soft_impute_data
+
+# Categorical columns - fill missing values with the mode
+categorical_cols = df_cleaned.select_dtypes(include=['object']).columns
+for col in categorical_cols:
+    df_cleaned[col] = df_cleaned[col].fillna(df_cleaned[col].mode()[0])
+
+# Step 3: Drop rows with remaining missing values
+df_cleaned = df_cleaned.dropna()
+```
 ### 2. Classification Selection
 
 Two machine learning models were considered for this task:
@@ -65,6 +92,18 @@ Through experimentation, **k-Nearest Neighbors (kNN)** was selected as the optim
 We employed **grid search** and **cross-validation** to fine-tune the hyperparameters of both models. This ensured that the models were trained on various subsets of the data, and the best performing hyperparameters were selected based on validation results.
 
 Grid search explored various combinations of features and hyperparameters to optimize model performance, ensuring the best possible outcome.
+
+```
+# Add feature selection step to pipeline
+pipe = Pipeline([
+    ("standardizer", standardizer),
+    ("feature_selection", SelectKBest(score_func=f_classif)),  # Feature selection
+    ("knn", knn)
+])
+
+# Create search with parameters and set 5-fold cross-validation
+classifier = GridSearchCV(pipe, search_space, cv=5, verbose=0).fit(X_train, y_train)
+```
 
 ### 5. Error Analysis
 
